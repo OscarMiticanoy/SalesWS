@@ -28,76 +28,76 @@ namespace SalesWS.Controllers
             return shipperDTO;
         }
 
-        // GET: api/Shipper/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<ShipperDTO>> GetShipper(int id)
-        {
-            var shipper = await _context.Shippers.FindAsync(id);
-            if (shipper == null)
-            {
-                return NotFound();
-            }
-            var shipperDTO = _mapper.Map<ShipperDTO>(shipper);
-            return shipperDTO;
-        }
+        //// GET: api/Shipper/5
+        //[HttpGet("{id}")]
+        //public async Task<ActionResult<ShipperDTO>> GetShipper(int id)
+        //{
+        //    var shipper = await _context.Shippers.FindAsync(id);
+        //    if (shipper == null)
+        //    {
+        //        return NotFound();
+        //    }
+        //    var shipperDTO = _mapper.Map<ShipperDTO>(shipper);
+        //    return shipperDTO;
+        //}
 
-        // PUT: api/Shipper/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutShipper(int id, Shipper shipper)
-        {
-            if (id != shipper.Shipperid)
-            {
-                return BadRequest();
-            }
+        //// PUT: api/Shipper/5
+        //// To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        //[HttpPut("{id}")]
+        //public async Task<IActionResult> PutShipper(int id, Shipper shipper)
+        //{
+        //    if (id != shipper.Shipperid)
+        //    {
+        //        return BadRequest();
+        //    }
 
-            _context.Entry(shipper).State = EntityState.Modified;
+        //    _context.Entry(shipper).State = EntityState.Modified;
 
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!ShipperExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+        //    try
+        //    {
+        //        await _context.SaveChangesAsync();
+        //    }
+        //    catch (DbUpdateConcurrencyException)
+        //    {
+        //        if (!ShipperExists(id))
+        //        {
+        //            return NotFound();
+        //        }
+        //        else
+        //        {
+        //            throw;
+        //        }
+        //    }
 
-            return NoContent();
-        }
+        //    return NoContent();
+        //}
 
-        // POST: api/Shipper
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPost]
-        public async Task<ActionResult<Shipper>> PostShipper(Shipper shipper)
-        {
-            _context.Shippers.Add(shipper);
-            await _context.SaveChangesAsync();
+        //// POST: api/Shipper
+        //// To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        //[HttpPost]
+        //public async Task<ActionResult<Shipper>> PostShipper(Shipper shipper)
+        //{
+        //    _context.Shippers.Add(shipper);
+        //    await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetShipper", new { id = shipper.Shipperid }, shipper);
-        }
+        //    return CreatedAtAction("GetShipper", new { id = shipper.Shipperid }, shipper);
+        //}
 
-        // DELETE: api/Shipper/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteShipper(int id)
-        {
-            var shipper = await _context.Shippers.FindAsync(id);
-            if (shipper == null)
-            {
-                return NotFound();
-            }
+        //// DELETE: api/Shipper/5
+        //[HttpDelete("{id}")]
+        //public async Task<IActionResult> DeleteShipper(int id)
+        //{
+        //    var shipper = await _context.Shippers.FindAsync(id);
+        //    if (shipper == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            _context.Shippers.Remove(shipper);
-            await _context.SaveChangesAsync();
+        //    _context.Shippers.Remove(shipper);
+        //    await _context.SaveChangesAsync();
 
-            return NoContent();
-        }
+        //    return NoContent();
+        //}
 
         private bool ShipperExists(int id)
         {
