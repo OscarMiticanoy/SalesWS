@@ -25,6 +25,12 @@ builder.Services.AddMvc();
 builder.Services.AddDbContext<StoreSampleContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("Connection")));
 
+builder.Services.AddCors(c =>
+{
+    c.AddPolicy("NewPolicy", app =>
+    app.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -34,7 +40,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseCors(c => c.AllowAnyHeader().AllowAnyOrigin().AllowAnyMethod());
+app.UseCors("NewPolicy");
 
 app.UseHttpsRedirection();
 
